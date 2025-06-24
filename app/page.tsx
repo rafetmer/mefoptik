@@ -975,7 +975,7 @@ export default function Component() {
                     opacity: Math.max(0.3, 0.9 - scrollY * 0.0006),
                   }}
                 >
-                  Samsun'da 2 şubemizle hizmetinizdeyiz
+                  Samsun&apos;da 2 şubemizle hizmetinizdeyiz
                 </p>
               </div>
             </div>
@@ -1038,7 +1038,7 @@ export default function Component() {
                           rel="noopener noreferrer"
                           className="block text-mef-brown hover:text-mef-dark transition-colors underline decoration-dotted font-medium"
                         >
-                          📍 56'lar
+                          📍 56&apos;lar
                         </a>
                       </div>
                     </div>
