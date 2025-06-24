@@ -384,7 +384,7 @@ export default function Component() {
                     opacity: Math.max(0.3, 0.9 - scrollY * 0.0006),
                   }}
                 >
-                  2021 yılından bu yana Samsun'da göz sağlığı ve estetik alanda hizmet veriyoruz
+                  2021 yılından bu yana Samsun&apos;da göz sağlığı ve estetik alanda hizmet veriyoruz
                 </p>
               </div>
             </div>
@@ -489,7 +489,7 @@ export default function Component() {
                     opacity: Math.max(0.3, 0.9 - scrollY * 0.0006),
                   }}
                 >
-                  "Her Bakış Bir Hikayedir…"
+                  &quot;Her Bakış Bir Hikayedir…&quot;
                 </p>
               </div>
             </div>
@@ -508,13 +508,13 @@ export default function Component() {
                   >
                     <div className="bg-mef-light/20 rounded-2xl p-8 backdrop-blur-sm">
                       <p className="text-lg text-mef-dark leading-relaxed mb-6">
-                        <strong className="text-mef-brown">MEF OPTİK</strong>, 2021 yılında Samsun Saathane Meydanı'nda
+                        <strong className="text-mef-brown">MEF OPTİK</strong>, 2021 yılında Samsun Saathane Meydanı&apos;nda
                         kurucumuz <strong className="text-mef-brown">Optisyen Mehmet Fatih Mercimek</strong> tarafından
                         hayata geçirildi. Kurulduğu günden bu yana, yalnızca bir optik mağazası olmanın ötesine geçerek,
                         her müşterisinin dünyayı daha net ve daha şık görmesini sağlamayı hedefledi.
                       </p>
                       <p className="text-lg text-mef-dark leading-relaxed mb-6">
-                        Samsun'da ikinci şubemizle <strong className="text-mef-brown">56'lar bölgesinde</strong> de
+                        Samsun&apos;da ikinci şubemizle <strong className="text-mef-brown">56'lar bölgesinde</strong> de
                         hizmet vermenin gururunu yaşıyoruz. Her bir çerçeve, her bir cam, bizler için sadece bir ürün
                         değil; aynı zamanda bir yaşam tarzı, bir özgüven yansımasıdır.
                       </p>
@@ -537,8 +537,8 @@ export default function Component() {
                     >
                       <div className="bg-mef-light/10 rounded-xl p-6 text-center group hover:bg-mef-light/20 transition-all duration-300">
                         <Calendar className="h-12 w-12 text-mef-brown mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                        <h4 className="font-semibold text-mef-dark text-lg mb-2">2021'den Bu Yana</h4>
-                        <p className="text-mef-brown">Samsun'da güvenilir optik hizmeti</p>
+                        <h4 className="font-semibold text-mef-dark text-lg mb-2">2021&apos;den Bu Yana</h4>
+                        <p className="text-mef-brown">Samsun&apos;da güvenilir optik hizmeti</p>
                       </div>
                     </div>
 
@@ -552,7 +552,7 @@ export default function Component() {
                       <div className="bg-mef-light/10 rounded-xl p-6 text-center group hover:bg-mef-light/20 transition-all duration-300">
                         <MapPin className="h-12 w-12 text-mef-brown mx-auto mb-4 group-hover:scale-110 transition-transform" />
                         <h4 className="font-semibold text-mef-dark text-lg mb-2">2 Şube</h4>
-                        <p className="text-mef-brown">Saathane Meydanı ve 56'lar</p>
+                        <p className="text-mef-brown">Saathane Meydanı ve 56&apos;lar</p>
                       </div>
                     </div>
 
@@ -579,7 +579,7 @@ export default function Component() {
                   >
                     <div className="bg-gradient-to-r from-mef-brown/20 to-mef-light/20 rounded-2xl p-8">
                       <p className="text-xl text-mef-dark font-medium italic">
-                        "Bizim için her ziyaret bir tanışma, her bakış bir hikâyenin başlangıcıdır."
+                        &quot;Bizim için her ziyaret bir tanışma, her bakış bir hikâyenin başlangıcıdır.&quot;
                       </p>
                     </div>
                   </div>
@@ -644,13 +644,13 @@ export default function Component() {
                         </span>
                       </div>
                       <h3 className="text-5xl md:text-6xl font-bold text-mef-dark leading-tight">
-                        Türkiye'nin
+                        Türkiye&apos;nin
                         <span className="block text-mef-brown">Güvenilir Markası</span>
                       </h3>
                       <div className="space-y-6">
                         <p className="text-xl text-mef-dark leading-relaxed">
                           MEF OPTİK olarak vizyonumuz; göz sağlığı ve estetik alanında{" "}
-                          <strong>Samsun'un ötesine geçerek</strong>, Türkiye'nin en güvenilir ve yenilikçi optik
+                          <strong>Samsun&apos;un ötesine geçerek</strong>, Türkiye&apos;nin en güvenilir ve yenilikçi optik
                           markalarından biri olmak.
                         </p>
                         <p className="text-lg text-mef-brown leading-relaxed">
