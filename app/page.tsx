@@ -514,7 +514,7 @@ export default function Component() {
                         her müşterisinin dünyayı daha net ve daha şık görmesini sağlamayı hedefledi.
                       </p>
                       <p className="text-lg text-mef-dark leading-relaxed mb-6">
-                        Samsun&apos;da ikinci şubemizle <strong className="text-mef-brown">56'lar bölgesinde</strong> de
+                        Samsun&apos;da ikinci şubemizle <strong className="text-mef-brown">56&apos;lar bölgesinde</strong> de
                         hizmet vermenin gururunu yaşıyoruz. Her bir çerçeve, her bir cam, bizler için sadece bir ürün
                         değil; aynı zamanda bir yaşam tarzı, bir özgüven yansımasıdır.
                       </p>
@@ -692,14 +692,14 @@ export default function Component() {
                       >
                         <Image
                           src="/56lar-bolge.jpg"
-                          alt="56'lar Şubesi"
+                          alt="56&apos;lar Şubesi"
                           width={600}
                           height={600}
                           className="rounded-2xl shadow-2xl group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-black/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                           <div className="bg-white/90 px-4 py-2 rounded-full">
-                            <p className="text-mef-dark font-medium">📍 56'lar Şubesi</p>
+                            <p className="text-mef-dark font-medium">📍 56&apos;lar Şubesi</p>
                           </div>
                         </div>
                       </a>
@@ -743,7 +743,7 @@ export default function Component() {
                       </div>
                       <div className="bg-mef-brown/10 rounded-2xl p-6 mb-6">
                         <p className="text-2xl font-bold text-mef-light italic text-center">
-                          "Her insana net bir bakış, her bakışa özel bir dokunuş."
+                          &quot;Her insana net bir bakış, her bakışa özel bir dokunuş.&quot;
                         </p>
                       </div>
                       <h3 className="text-5xl md:text-6xl font-bold text-white leading-tight">
@@ -774,7 +774,7 @@ export default function Component() {
                       </div>
                       <div className="bg-mef-dark/50 rounded-xl p-6 border-l-4 border-mef-brown">
                         <p className="text-mef-light italic font-medium">
-                          "Göz sağlığına gösterdiğimiz özen, markamıza duyulan güvenin temelidir."
+                          &quot;Göz sağlığına gösterdiğimiz özen, markamıza duyulan güvenin temelidir.&quot;
                         </p>
                       </div>
                       <p className="text-lg text-mef-cream leading-relaxed">
