@@ -375,7 +375,7 @@ export default function Component() {
                     opacity: Math.max(0.5, 1 - scrollY * 0.0008),
                   }}
                 >
-                  "Her Bakış Bir Hikayedir"
+                  &quot;Her Bakış Bir Hikayedir&quot;
                 </h2>
                 <p
                   className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed opacity-90 transition-all duration-1000 ease-out"
