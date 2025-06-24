@@ -27,18 +27,28 @@ export default function Component() {
   const [scrollY, setScrollY] = useState(0)
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isClient, setIsClient] = useState(false)
   const heroRef = useRef<HTMLElement>(null)
   const aboutRef = useRef<HTMLElement>(null)
   const visionRef = useRef<HTMLElement>(null)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  // Client-side rendering kontrolü
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    setIsClient(true)
   }, [])
 
   useEffect(() => {
+    if (!isClient) return
+    
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [isClient])
+
+  useEffect(() => {
+    if (!isClient) return
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -54,11 +64,11 @@ export default function Component() {
     sections.forEach((section) => observer.observe(section))
 
     return () => observer.disconnect()
-  }, [])
+  }, [isClient])
 
   // Glasses Icon Component using the new provided image
   const GlassesIcon = ({ className = "w-7 h-7" }: { className?: string }) => (
-    <Image src="/glasses-icon-new.jpg" alt="Glasses" width={28} height={28} className={className} />
+    <Image src="/next.svg" alt="Glasses" width={28} height={28} className={className} />
   )
 
   // WhatsApp phone number
@@ -129,12 +139,15 @@ export default function Component() {
     setExpandedFaq(expandedFaq === id ? null : id)
   }
 
+  // Safe scrollY value for SSR
+  const safeScrollY = isClient ? scrollY : 0
+
   return (
     <div className="flex flex-col min-h-screen bg-mef-cream">
       {/* Header */}
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrollY > 50 ? "bg-mef-black/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+          isClient && scrollY > 50 ? "bg-mef-black/95 backdrop-blur-md shadow-lg" : "bg-transparent"
         }`}
       >
         <div className="container mx-auto px-4 py-4">
@@ -149,7 +162,7 @@ export default function Component() {
               </div>
               <div>
                 <h1
-                  className={`text-2xl font-outfit font-medium transition-colors ${scrollY > 50 ? "text-white" : "text-mef-brown"}`}
+                  className={`text-2xl font-outfit font-medium transition-colors ${isClient && scrollY > 50 ? "text-white" : "text-mef-brown"}`}
                 >
                   mef optik
                 </h1>
@@ -160,37 +173,37 @@ export default function Component() {
               <nav className="hidden md:flex space-x-8">
                 <Link
                   href="#anasayfa"
-                  className={`font-medium transition-colors ${scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
+                  className={`font-medium transition-colors ${isClient && scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
                 >
                   Ana Sayfa
                 </Link>
                 <Link
                   href="#hakkinda"
-                  className={`font-medium transition-colors ${scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
+                  className={`font-medium transition-colors ${isClient && scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
                 >
                   Hakkında
                 </Link>
                 <Link
                   href="#vizyon"
-                  className={`font-medium transition-colors ${scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
+                  className={`font-medium transition-colors ${isClient && scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
                 >
                   Vizyonumuz
                 </Link>
                 <Link
                   href="#markalar"
-                  className={`font-medium transition-colors ${scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
+                  className={`font-medium transition-colors ${isClient && scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
                 >
                   Markalar
                 </Link>
                 <Link
                   href="#blog"
-                  className={`font-medium transition-colors ${scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
+                  className={`font-medium transition-colors ${isClient && scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
                 >
                   S&C
                 </Link>
                 <Link
                   href="#iletisim"
-                  className={`font-medium transition-colors ${scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
+                  className={`font-medium transition-colors ${isClient && scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
                 >
                   İletişim
                 </Link>
@@ -226,7 +239,7 @@ export default function Component() {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className={`md:hidden p-2 rounded-lg transition-all duration-300 transform hover:scale-110 ${
-                  scrollY > 50 ? "text-white hover:bg-white/10" : "text-mef-brown hover:bg-mef-brown/10"
+                  isClient && scrollY > 50 ? "text-white hover:bg-white/10" : "text-mef-brown hover:bg-mef-brown/10"
                 } ${mobileMenuOpen ? "rotate-90" : "rotate-0"}`}
               >
                 {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -335,7 +348,7 @@ export default function Component() {
               <div
                 className="w-full h-full bg-gradient-to-r from-mef-brown/20 to-transparent transition-transform duration-1000 ease-out"
                 style={{
-                  transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0001})`,
+                  transform: `translateY(${safeScrollY * 0.3}px) scale(${1 + safeScrollY * 0.0001})`,
                 }}
               ></div>
             </div>
@@ -345,8 +358,8 @@ export default function Component() {
                 <div
                   className="mb-8 transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(30, scrollY * 0.03)}px)`,
-                    opacity: Math.max(0.7, 1 - scrollY * 0.0005),
+                    transform: `translateY(${Math.min(30, safeScrollY * 0.03)}px)`,
+                    opacity: Math.max(0.7, 1 - safeScrollY * 0.0005),
                   }}
                 >
                   <div className="flex items-center justify-center">
@@ -371,8 +384,8 @@ export default function Component() {
                 <h2
                   className="text-6xl md:text-8xl font-bold mb-8 tracking-tight transition-all duration-1000 ease-out italic"
                   style={{
-                    transform: `translateY(${Math.min(50, scrollY * 0.05)}px)`,
-                    opacity: Math.max(0.5, 1 - scrollY * 0.0008),
+                    transform: `translateY(${Math.min(50, safeScrollY * 0.05)}px)`,
+                    opacity: Math.max(0.5, 1 - safeScrollY * 0.0008),
                   }}
                 >
                   &quot;Her Bakış Bir Hikayedir&quot;
@@ -380,8 +393,8 @@ export default function Component() {
                 <p
                   className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed opacity-90 transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(30, scrollY * 0.03)}px)`,
-                    opacity: Math.max(0.3, 0.9 - scrollY * 0.0006),
+                    transform: `translateY(${Math.min(30, safeScrollY * 0.03)}px)`,
+                    opacity: Math.max(0.3, 0.9 - safeScrollY * 0.0006),
                   }}
                 >
                   2021 yılından bu yana Samsun&apos;da göz sağlığı ve estetik alanda hizmet veriyoruz
@@ -438,7 +451,7 @@ export default function Component() {
                         className="block cursor-pointer group"
                       >
                         <Image
-                          src="/saathane-meydani.jpg"
+                          src="/vercel.svg"
                           alt="Saathane Meydanı Şubesi"
                           width={600}
                           height={500}
@@ -466,7 +479,7 @@ export default function Component() {
               <div
                 className="w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out"
                 style={{
-                  transform: `scale(${1 + scrollY * 0.0002}) rotate(${scrollY * 0.02}deg)`,
+                  transform: `scale(${1 + safeScrollY * 0.0002}) rotate(${safeScrollY * 0.02}deg)`,
                 }}
               ></div>
             </div>
@@ -476,8 +489,8 @@ export default function Component() {
                 <h2
                   className="text-6xl md:text-8xl font-bold mb-8 tracking-tight transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(50, scrollY * 0.05)}px)`,
-                    opacity: Math.max(0.5, 1 - scrollY * 0.0008),
+                    transform: `translateY(${Math.min(50, safeScrollY * 0.05)}px)`,
+                    opacity: Math.max(0.5, 1 - safeScrollY * 0.0008),
                   }}
                 >
                   Hakkımızda
@@ -485,8 +498,8 @@ export default function Component() {
                 <p
                   className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed opacity-90 transition-all duration-1000 ease-out italic"
                   style={{
-                    transform: `translateY(${Math.min(30, scrollY * 0.03)}px)`,
-                    opacity: Math.max(0.3, 0.9 - scrollY * 0.0006),
+                    transform: `translateY(${Math.min(30, safeScrollY * 0.03)}px)`,
+                    opacity: Math.max(0.3, 0.9 - safeScrollY * 0.0006),
                   }}
                 >
                   &quot;Her Bakış Bir Hikayedir…&quot;
@@ -597,7 +610,7 @@ export default function Component() {
               <div
                 className="w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out"
                 style={{
-                  transform: `scale(${1 + scrollY * 0.0002}) rotate(${scrollY * 0.02}deg)`,
+                  transform: `scale(${1 + safeScrollY * 0.0002}) rotate(${safeScrollY * 0.02}deg)`,
                 }}
               ></div>
             </div>
@@ -607,8 +620,8 @@ export default function Component() {
                 <h2
                   className="text-6xl md:text-8xl font-bold mb-8 tracking-tight transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(50, scrollY * 0.05)}px)`,
-                    opacity: Math.max(0.5, 1 - scrollY * 0.0008),
+                    transform: `translateY(${Math.min(50, safeScrollY * 0.05)}px)`,
+                    opacity: Math.max(0.5, 1 - safeScrollY * 0.0008),
                   }}
                 >
                   Vizyonumuz
@@ -616,8 +629,8 @@ export default function Component() {
                 <p
                   className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed opacity-90 transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(30, scrollY * 0.03)}px)`,
-                    opacity: Math.max(0.3, 0.9 - scrollY * 0.0006),
+                    transform: `translateY(${Math.min(30, safeScrollY * 0.03)}px)`,
+                    opacity: Math.max(0.3, 0.9 - safeScrollY * 0.0006),
                   }}
                 >
                   Geleceğe net bakmak isteyen herkesin aklına ilk gelen marka olmak
@@ -691,7 +704,7 @@ export default function Component() {
                         className="block cursor-pointer group"
                       >
                         <Image
-                          src="/56lar-bolge.jpg"
+                          src="/globe.svg"
                           alt="56&apos;lar Şubesi"
                           width={600}
                           height={600}
@@ -723,7 +736,7 @@ export default function Component() {
                       }`}
                     >
                       <Image
-                        src="/placeholder.svg?height=600&width=600"
+                        src="/file.svg"
                         alt="Misyon görseli"
                         width={600}
                         height={600}
@@ -798,7 +811,7 @@ export default function Component() {
               <div
                 className="w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out"
                 style={{
-                  transform: `scale(${1 + scrollY * 0.0002}) rotate(${scrollY * 0.02}deg)`,
+                  transform: `scale(${1 + safeScrollY * 0.0002}) rotate(${safeScrollY * 0.02}deg)`,
                 }}
               ></div>
             </div>
@@ -808,8 +821,8 @@ export default function Component() {
                 <h2
                   className="text-6xl md:text-8xl font-bold mb-8 tracking-tight transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(50, scrollY * 0.05)}px)`,
-                    opacity: Math.max(0.5, 1 - scrollY * 0.0008),
+                    transform: `translateY(${Math.min(50, safeScrollY * 0.05)}px)`,
+                    opacity: Math.max(0.5, 1 - safeScrollY * 0.0008),
                   }}
                 >
                   Markalarımız
@@ -817,8 +830,8 @@ export default function Component() {
                 <p
                   className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed opacity-90 transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(30, scrollY * 0.03)}px)`,
-                    opacity: Math.max(0.3, 0.9 - scrollY * 0.0006),
+                    transform: `translateY(${Math.min(30, safeScrollY * 0.03)}px)`,
+                    opacity: Math.max(0.3, 0.9 - safeScrollY * 0.0006),
                   }}
                 >
                   Dünyaca ünlü markaların geniş koleksiyonları
@@ -860,7 +873,7 @@ export default function Component() {
               <div
                 className="w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out"
                 style={{
-                  transform: `scale(${1 + scrollY * 0.0002}) rotate(${scrollY * 0.02}deg)`,
+                  transform: `scale(${1 + safeScrollY * 0.0002}) rotate(${safeScrollY * 0.02}deg)`,
                 }}
               ></div>
             </div>
@@ -870,8 +883,8 @@ export default function Component() {
                 <h2
                   className="text-6xl md:text-8xl font-bold mb-8 tracking-tight transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(50, scrollY * 0.05)}px)`,
-                    opacity: Math.max(0.5, 1 - scrollY * 0.0008),
+                    transform: `translateY(${Math.min(50, safeScrollY * 0.05)}px)`,
+                    opacity: Math.max(0.5, 1 - safeScrollY * 0.0008),
                   }}
                 >
                   Soru & Cevap
@@ -879,8 +892,8 @@ export default function Component() {
                 <p
                   className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed opacity-90 transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(30, scrollY * 0.03)}px)`,
-                    opacity: Math.max(0.3, 0.9 - scrollY * 0.0006),
+                    transform: `translateY(${Math.min(30, safeScrollY * 0.03)}px)`,
+                    opacity: Math.max(0.3, 0.9 - safeScrollY * 0.0006),
                   }}
                 >
                   Gözlük ve göz sağlığı hakkında merak ettikleriniz
@@ -952,7 +965,7 @@ export default function Component() {
               <div
                 className="w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out"
                 style={{
-                  transform: `scale(${1 + scrollY * 0.0002}) rotate(${scrollY * 0.02}deg)`,
+                  transform: `scale(${1 + safeScrollY * 0.0002}) rotate(${safeScrollY * 0.02}deg)`,
                 }}
               ></div>
             </div>
@@ -962,8 +975,8 @@ export default function Component() {
                 <h2
                   className="text-6xl md:text-8xl font-bold mb-8 tracking-tight transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(50, scrollY * 0.05)}px)`,
-                    opacity: Math.max(0.5, 1 - scrollY * 0.0008),
+                    transform: `translateY(${Math.min(50, safeScrollY * 0.05)}px)`,
+                    opacity: Math.max(0.5, 1 - safeScrollY * 0.0008),
                   }}
                 >
                   İletişim
@@ -971,8 +984,8 @@ export default function Component() {
                 <p
                   className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed opacity-90 transition-all duration-1000 ease-out"
                   style={{
-                    transform: `translateY(${Math.min(30, scrollY * 0.03)}px)`,
-                    opacity: Math.max(0.3, 0.9 - scrollY * 0.0006),
+                    transform: `translateY(${Math.min(30, safeScrollY * 0.03)}px)`,
+                    opacity: Math.max(0.3, 0.9 - safeScrollY * 0.0006),
                   }}
                 >
                   Samsun&apos;da 2 şubemizle hizmetinizdeyiz
