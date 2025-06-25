@@ -266,10 +266,10 @@ export default function Component() {
                   console.log('Hamburger clicked, current state:', mobileMenuOpen);
                   setMobileMenuOpen(!mobileMenuOpen);
                 }}
-                className={`md:hidden p-3 rounded-lg transition-all duration-300 transform hover:scale-110 z-[120] relative min-w-[44px] min-h-[44px] flex items-center justify-center ${
+                className={`md:hidden p-3 rounded-lg transition-all duration-300 transform hover:scale-110 z-[115] relative min-w-[44px] min-h-[44px] flex items-center justify-center text-mef-brown hover:bg-mef-brown/20 bg-mef-brown/5 border border-mef-brown/20 ${
                   isClient && scrollY > 50 
-                    ? "text-white hover:bg-white/20 bg-white/10 border border-white/20 shadow-lg" 
-                    : "text-mef-brown hover:bg-mef-brown/20 bg-mef-brown/5 border border-mef-brown/20"
+                    ? "shadow-lg" 
+                    : ""
                 } ${mobileMenuOpen ? "rotate-90" : "rotate-0"}`}
               >
                 {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -287,10 +287,14 @@ export default function Component() {
         >
           {/* Backdrop */}
           <div
-            className={`fixed inset-0 bg-black transition-opacity duration-300 ${
+            className={`fixed inset-0 bg-black transition-opacity duration-300 cursor-pointer ${
               mobileMenuOpen ? "bg-opacity-75" : "bg-opacity-0"
             }`}
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => {
+              console.log('Backdrop clicked');
+              e.stopPropagation();
+              setMobileMenuOpen(false);
+            }}
           />
 
           {/* Sidebar */}
@@ -299,6 +303,7 @@ export default function Component() {
               mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
             style={{ backgroundColor: '#ffffff' }}
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-mef-light/30 bg-white" style={{ backgroundColor: '#ffffff' }}>
@@ -310,12 +315,6 @@ export default function Component() {
                 </div>
                 <span className="font-goodly font-semibold text-mef-brown text-lg tracking-goodly">mef optik</span>
               </Link>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-mef-brown hover:text-mef-dark hover:bg-mef-light/20 rounded-lg transition-all duration-200"
-              >
-                <X className="h-5 w-5" />
-              </button>
             </div>
 
             {/* Navigation */}
