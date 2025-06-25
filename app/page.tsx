@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import {
   Eye,
   Users,
@@ -19,7 +20,6 @@ import {
   Menu,
   X,
 } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState, useRef } from "react"
 
@@ -45,6 +45,22 @@ export default function Component() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [isClient])
+
+  // Mobile menu scroll lock
+  useEffect(() => {
+    if (!isClient) return
+    
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen, isClient])
 
   useEffect(() => {
     if (!isClient) return
@@ -75,24 +91,16 @@ export default function Component() {
   const whatsappNumber = "+90 (362) 433 0303"
   const whatsappUrl = `https://wa.me/903624330303`
 
-  // Brand placeholders for manual logo addition
+  // Brand data with PNG logos
   const brands = [
-    { name: "PRADA", placeholder: "Prada logosu buraya gelecek" },
-    { name: "MIU MIU", placeholder: "Miu Miu logosu buraya gelecek" },
-    { name: "VERSACE", placeholder: "Versace logosu buraya gelecek" },
-    { name: "DOLCE & GABBANA", placeholder: "Dolce & Gabbana logosu buraya gelecek" },
-    { name: "Persol", placeholder: "Persol logosu buraya gelecek" },
-    { name: "GIORGIO ARMANI", placeholder: "Giorgio Armani logosu buraya gelecek" },
-    { name: "TIFFANY & Co.", placeholder: "Tiffany & Co. logosu buraya gelecek" },
-    { name: "Ray-Ban", placeholder: "Ray-Ban logosu buraya gelecek" },
-    { name: "OAKLEY", placeholder: "Oakley logosu buraya gelecek" },
-    { name: "GUCCI", placeholder: "Gucci logosu buraya gelecek" },
-    { name: "TOM FORD", placeholder: "Tom Ford logosu buraya gelecek" },
-    { name: "POLICE", placeholder: "Police logosu buraya gelecek" },
-    { name: "SILHOUETTE", placeholder: "Silhouette logosu buraya gelecek" },
-    { name: "LINDBERG", placeholder: "Lindberg logosu buraya gelecek" },
-    { name: "CARTIER", placeholder: "Cartier logosu buraya gelecek" },
-    { name: "CHANEL", placeholder: "Chanel logosu buraya gelecek" },
+    { name: "PRADA", logo: '/brands-logos/prada_logo.png' },
+    { name: "MIU MIU", logo: '/brands-logos/miumiu_logo.png' },
+    { name: "VERSACE", logo: '/brands-logos/versace_logo.png' },
+    { name: "DOLCE & GABBANA", logo: '/brands-logos/dg_logo.png' },
+    { name: "Persol", logo: '/brands-logos/persol_logo.png' },
+    { name: "GIORGIO ARMANI", logo: '/brands-logos/armani_logo.png' },
+    { name: "TIFFANY & Co.", logo: '/brands-logos/tiffanyco_logo.png' },
+    { name: "Ray-Ban", logo: '/brands-logos/rayban_logo.png' },
   ]
 
   // FAQ data
@@ -174,6 +182,12 @@ export default function Component() {
             <div className="flex items-center space-x-8">
               <nav className="hidden md:flex space-x-8">
                 <Link
+                  href="#home"
+                  className={`font-medium transition-colors ${isClient && scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
+                >
+                  Ana Sayfa
+                </Link>
+                <Link
                   href="#hakkinda"
                   className={`font-medium transition-colors ${isClient && scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
                 >
@@ -233,9 +247,14 @@ export default function Component() {
 
               {/* Mobile Menu Button - Positioned at the far right */}
               <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`md:hidden p-2 rounded-lg transition-all duration-300 transform hover:scale-110 ${
-                  isClient && scrollY > 50 ? "text-white hover:bg-white/10" : "text-mef-brown hover:bg-mef-brown/10"
+                onClick={() => {
+                  console.log('Hamburger clicked, current state:', mobileMenuOpen);
+                  setMobileMenuOpen(!mobileMenuOpen);
+                }}
+                className={`md:hidden p-3 rounded-lg transition-all duration-300 transform hover:scale-110 z-[70] relative min-w-[44px] min-h-[44px] flex items-center justify-center ${
+                  isClient && scrollY > 50 
+                    ? "text-white hover:bg-white/20 bg-white/10 border border-white/20 shadow-lg" 
+                    : "text-mef-brown hover:bg-mef-brown/20 bg-mef-brown/5 border border-mef-brown/20"
                 } ${mobileMenuOpen ? "rotate-90" : "rotate-0"}`}
               >
                 {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -246,26 +265,28 @@ export default function Component() {
 
         {/* Mobile Sidebar with Animation */}
         <div
-          className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
+          className={`fixed inset-0 z-[60] md:hidden transition-all duration-300 ${
             mobileMenuOpen ? "visible opacity-100" : "invisible opacity-0"
           }`}
+          style={{ zIndex: 60 }}
         >
           {/* Backdrop */}
           <div
             className={`fixed inset-0 bg-black transition-opacity duration-300 ${
-              mobileMenuOpen ? "bg-opacity-50" : "bg-opacity-0"
+              mobileMenuOpen ? "bg-opacity-75" : "bg-opacity-0"
             }`}
             onClick={() => setMobileMenuOpen(false)}
           />
 
           {/* Sidebar */}
           <div
-            className={`fixed right-0 top-0 h-full w-80 bg-gradient-to-b from-white to-mef-cream shadow-2xl transform transition-transform duration-300 ease-out ${
+            className={`fixed right-0 top-0 h-full w-80 bg-white shadow-2xl transform transition-transform duration-300 ease-out border-l border-gray-200 ${
               mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
+            style={{ backgroundColor: '#ffffff' }}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-mef-light/30 bg-white/80 backdrop-blur-sm">
+            <div className="flex items-center justify-between p-6 border-b border-mef-light/30 bg-white" style={{ backgroundColor: '#ffffff' }}>
               <Link href="#home" onClick={() => setMobileMenuOpen(false)} className="flex items-center space-x-3 group">
                 <div className="w-10 h-10 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-inner">
@@ -283,9 +304,10 @@ export default function Component() {
             </div>
 
             {/* Navigation */}
-            <nav className="p-6">
+            <nav className="p-6 bg-white" style={{ backgroundColor: '#ffffff' }}>
               <div className="space-y-2">
                 {[
+                  { href: "#home", label: "Ana Sayfa", icon: "🏠" },
                   { href: "#hakkinda", label: "Hakkında", icon: "ℹ️" },
                   { href: "#vizyon", label: "Vizyonumuz", icon: "🎯" },
                   { href: "#markalar", label: "Markalar", icon: "🏷️" },
@@ -446,15 +468,15 @@ export default function Component() {
                         className="block cursor-pointer group"
                       >
                         <Image
-                          src="/vercel.svg"
-                          alt="Saathane Meydanı Şubesi"
+                          src="/mef-optik-magaza-dis.jpg"
+                          alt="MEF Optik Mağaza - Saathane Meydanı Şubesi"
                           width={600}
                           height={500}
-                          className="rounded-lg shadow-2xl transform group-hover:scale-105 transition-transform duration-500"
+                          className="rounded-lg shadow-2xl transform group-hover:scale-105 transition-transform duration-500 object-cover"
                         />
                         <div className="absolute inset-0 bg-black/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                           <div className="bg-white/90 px-4 py-2 rounded-full">
-                            <p className="text-mef-dark font-medium">📍 Saathane Meydanı Şubesi</p>
+                            <p className="text-mef-dark font-medium">📍 MEF Optik Mağazamız</p>
                           </div>
                         </div>
                       </a>
@@ -847,8 +869,14 @@ export default function Component() {
                   {brands.map((brand, index) => (
                     <div key={index} className="text-center group">
                       <div className="bg-white rounded-lg p-6 mb-3 hover:bg-gradient-to-br hover:from-mef-cream hover:to-mef-light/20 transition-all duration-300 transform group-hover:scale-105 group-hover:shadow-xl shadow-lg border border-gray-100 h-32 flex flex-col items-center justify-center">
-                        <div className="w-full h-20 bg-gray-100 rounded-md mb-2 flex items-center justify-center border-2 border-dashed border-gray-300">
-                          <span className="text-xs text-gray-500 text-center px-2">Logo Alanı</span>
+                        <div className="w-full h-20 flex items-center justify-center mb-2">
+                          <Image
+                            src={brand.logo}
+                            alt={`${brand.name} logo`}
+                            width={120}
+                            height={60}
+                            className="object-contain max-h-full filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                          />
                         </div>
                         <p className="text-xs font-medium text-mef-brown">{brand.name}</p>
                       </div>
