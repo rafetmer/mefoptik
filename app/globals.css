@@ -178,3 +178,23 @@
   3. `.font-outfit`: Bu font ailesi `tailwind.config.ts`'e eklendiği için SİLİNDİ.
      Artık `className="font-outfit"` kullanabilirsiniz.
 */
+
+/* ======================================================================== */
+/* 5. MOBIL SVG OPTİMİZASYONU                                              */
+/* ======================================================================== */
+/* Mobil cihazlarda SVG ikonlarının kaybolma sorunu için */
+@layer utilities {
+  svg {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Gözlük ikonlarının her zaman görünür kalması için */
+  .glasses-icon {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    pointer-events: auto !important;
+  }
+}

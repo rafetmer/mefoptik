@@ -39,6 +39,12 @@ export const metadata: Metadata = {
   authors: [{ name: "MEF Optik" }],
   creator: "MEF Optik",
   publisher: "MEF Optik",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
   formatDetection: {
     email: false,
     address: false,

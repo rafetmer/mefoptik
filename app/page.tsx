@@ -82,9 +82,23 @@ export default function Component() {
     return () => observer.disconnect()
   }, [isClient])
 
-  // Glasses Icon Component using the new provided image
+  // Glasses Icon Component - Inline SVG for better mobile performance
   const GlassesIcon = ({ className = "w-7 h-7" }: { className?: string }) => (
-    <Image src="/round-glasses-cropped.svg" alt="Glasses" width={120} height={120} className={className} />
+    <svg 
+      viewBox="0 0 99.75 99.5" 
+      className={`${className} glasses-icon opacity-100`}
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ 
+        display: 'block',
+        opacity: 1,
+        visibility: 'visible',
+        minWidth: '1rem',
+        minHeight: '1rem'
+      }}
+    >
+      <path d="M93.393,44.642h-4.857c-2.295-6.903-8.887-11.908-16.652-11.908c-7.764,0-14.356,5.005-16.651,11.908   c0,0-2.823-1.503-6.077-1.405c-2.913,0.087-5.517,1.405-5.517,1.405c-2.295-6.903-8.887-11.908-16.652-11.908   c-7.765,0-14.357,5.005-16.652,11.908h-4.3c0,0-1.035,1.219-1.035,3.755s1.035,3.242,1.035,3.242h3.509   c0.841,8.754,8.34,15.628,17.442,15.628c8.756,0,16.01-6.366,17.3-14.642c-0.001-0.028-0.01-0.054-0.01-0.082   c0-2.335,2.304-4.227,5.145-4.227c2.725,0,4.932,1.746,5.111,3.947c1.131,8.452,8.468,15.004,17.351,15.004   c9.103,0,16.601-6.873,17.442-15.628h4.067c0,0,1.607-0.385,1.607-3.417C95,45.481,93.393,44.642,93.393,44.642z M41.572,51.638   c-0.83,7.208-7.05,12.829-14.585,12.829c-7.535,0-13.755-5.621-14.585-12.829C12.34,51.1,12.301,50.555,12.301,50   c0-1.894,0.381-3.699,1.056-5.358c2.167-5.33,7.454-9.109,13.63-9.109c6.176,0,11.463,3.779,13.63,9.109   c0.675,1.659,1.056,3.464,1.056,5.358C41.673,50.555,41.634,51.1,41.572,51.638z M86.468,51.638   c-0.83,7.208-7.05,12.829-14.585,12.829c-7.534,0-13.754-5.621-14.583-12.829C57.238,51.1,57.199,50.555,57.199,50   c0-1.894,0.381-3.699,1.056-5.358c2.167-5.33,7.454-9.109,13.628-9.109c6.176,0,11.463,3.779,13.63,9.109   c0.675,1.659,1.056,3.464,1.056,5.358C86.569,50.555,86.53,51.1,86.468,51.638z"/>
+    </svg>
   )
 
   // WhatsApp phone number
@@ -166,7 +180,7 @@ export default function Component() {
                 <div className="relative z-[110]">
                   <div className="w-12 h-12 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 opacity-100">
                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-inner opacity-100">
-                      <GlassesIcon className="w-6 h-6 text-mef-brown opacity-100" />
+                      <GlassesIcon className="w-6 h-6 text-mef-brown opacity-100 !opacity-100" />
                     </div>
                   </div>
                 </div>
@@ -291,7 +305,7 @@ export default function Component() {
               <Link href="#home" onClick={() => setMobileMenuOpen(false)} className="flex items-center space-x-3 group">
                 <div className="w-10 h-10 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-inner">
-                    <GlassesIcon className="w-4 h-4 text-mef-brown" />
+                    <GlassesIcon className="w-4 h-4 text-mef-brown opacity-100 !opacity-100" />
                   </div>
                 </div>
                 <span className="font-goodly font-semibold text-mef-brown text-lg tracking-goodly">mef optik</span>
@@ -387,7 +401,7 @@ export default function Component() {
                           <div className="relative">
                             <div className="w-20 h-20 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-2xl">
                               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner">
-                                <GlassesIcon className="w-10 h-10 text-mef-brown" />
+                                <GlassesIcon className="w-10 h-10 text-mef-brown opacity-100 !opacity-100" />
                               </div>
                             </div>
                           </div>
@@ -1094,7 +1108,7 @@ export default function Component() {
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
               <div className="w-8 h-8 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-lg">
                 <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                  <GlassesIcon className="w-4 h-4 text-mef-brown" />
+                  <GlassesIcon className="w-4 h-4 text-mef-brown opacity-100 !opacity-100" />
                 </div>
               </div>
               <div>
