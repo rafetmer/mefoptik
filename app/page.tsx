@@ -101,6 +101,7 @@ export default function Component() {
     { name: "GIORGIO ARMANI", logo: '/brands-logos/armani_logo.png' },
     { name: "TIFFANY & Co.", logo: '/brands-logos/tiffanyco_logo.png' },
     { name: "Ray-Ban", logo: '/brands-logos/rayban_logo.png' },
+    { name: "David Beckham", logo: '/brands-logos/Ottica-Guerra-David-Beckham.png' },
   ]
 
   // FAQ data
@@ -115,7 +116,7 @@ export default function Component() {
       id: 2,
       question: "Gözlük camlarını ne sıklıkla değiştirmeliyim?",
       answer:
-        "Gözlük camları genellikle 1-2 yılda bir kontrol edilmelidir. Çizikler, buğulanma veya görüş problemleri yaşıyorsanız daha erken değişim gerekebilir. Düzenli göz muayenesi yaptırmayı unutmayın.",
+        "Gözlük camları genellikle en geç 2 yılda bir kontrol edilmelidir. Çizikler, buğulanma veya görüş problemleri yaşıyorsanız daha erken değişim gerekebilir. Düzenli göz muayenesi yaptırmayı unutmayın.",
     },
     {
       id: 3,
@@ -127,19 +128,19 @@ export default function Component() {
       id: 4,
       question: "Gözlüklerimi nasıl temizlemeliyim?",
       answer:
-        "Mikrofiber bez ve özel gözlük temizleme solüsyonu kullanın. Sıcak su ve sabunla da temizleyebilirsiniz. Kağıt havlu, gömlek gibi malzemeler kullanmaktan kaçının, çizik yapabilir.",
+        "Mikrofiber bez ve özel gözlük temizleme solüsyonu kullanın. Ilık su ve sabunla da temizleyebilirsiniz. Kağıt havlu, gömlek gibi malzemeler kullanmaktan kaçının, çizik yapabilir.",
     },
     {
       id: 5,
       question: "Çocuklar için gözlük seçimi nasıl yapılır?",
       answer:
-        "Çocuk gözlükleri esnek, dayanıklı malzemeden olmalı. Güvenlik camları tercih edin. Çerçeve burnuna ve kulaklarına rahat oturmalı. Düzenli kontroller önemlidir.",
+        "Çocuk gözlükleri esnek, dayanıklı malzemeden olmalı. Mavi ışık koruyuculu ve mümkünse kırılmaz camları tercih edin. Çerçeve burnuna ve kulaklarına rahat oturmalı. Düzenli kontroller önemlidir.",
     },
     {
       id: 6,
       question: "Bilgisayar gözlüğü gerçekten işe yarar mı?",
       answer:
-        "Mavi ışık filtreli camlar göz yorgunluğunu azaltabilir. Özellikle uzun süre ekran başında çalışanlar için faydalıdır. Anti-reflektif kaplama da ekran parlamasını önler.",
+        "Mavi ışık filtreli camlar göz yorgunluğunu azaltabilir. Özellikle uzun süre ekran başında çalışanlar için faydalıdır. Anti-refle kaplama da yansımayı engeller.",
     },
   ]
 
@@ -154,7 +155,7 @@ export default function Component() {
     <div className="flex flex-col min-h-screen bg-mef-cream">
       {/* Header */}
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
           isClient && scrollY > 50 ? "bg-mef-black/95 backdrop-blur-md shadow-lg" : "bg-transparent"
         }`}
       >
@@ -162,10 +163,10 @@ export default function Component() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <Link href="#home" className="flex items-center space-x-3 group">
-                <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-inner">
-                      <GlassesIcon className="w-6 h-6 text-mef-brown" />
+                <div className="relative z-[110]">
+                  <div className="w-12 h-12 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 opacity-100">
+                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-inner opacity-100">
+                      <GlassesIcon className="w-6 h-6 text-mef-brown opacity-100" />
                     </div>
                   </div>
                 </div>
@@ -251,7 +252,7 @@ export default function Component() {
                   console.log('Hamburger clicked, current state:', mobileMenuOpen);
                   setMobileMenuOpen(!mobileMenuOpen);
                 }}
-                className={`md:hidden p-3 rounded-lg transition-all duration-300 transform hover:scale-110 z-[70] relative min-w-[44px] min-h-[44px] flex items-center justify-center ${
+                className={`md:hidden p-3 rounded-lg transition-all duration-300 transform hover:scale-110 z-[120] relative min-w-[44px] min-h-[44px] flex items-center justify-center ${
                   isClient && scrollY > 50 
                     ? "text-white hover:bg-white/20 bg-white/10 border border-white/20 shadow-lg" 
                     : "text-mef-brown hover:bg-mef-brown/20 bg-mef-brown/5 border border-mef-brown/20"
@@ -265,10 +266,10 @@ export default function Component() {
 
         {/* Mobile Sidebar with Animation */}
         <div
-          className={`fixed inset-0 z-[60] md:hidden transition-all duration-300 ${
+          className={`fixed inset-0 z-[110] md:hidden transition-all duration-300 ${
             mobileMenuOpen ? "visible opacity-100" : "invisible opacity-0"
           }`}
-          style={{ zIndex: 60 }}
+          style={{ zIndex: 110 }}
         >
           {/* Backdrop */}
           <div
@@ -399,7 +400,7 @@ export default function Component() {
                   </div>
                 </div>
                 <h2
-                  className="text-6xl md:text-8xl font-bold mb-8 tracking-tight transition-all duration-1000 ease-out italic"
+                  className="text-3xl md:text-4xl font-goodly font-medium mb-8 tracking-goodly transition-all duration-1000 ease-out text-center whitespace-nowrap"
                   style={{
                     transform: `translateY(${Math.min(50, safeScrollY * 0.05)}px)`,
                     opacity: Math.max(0.5, 1 - safeScrollY * 0.0008),
@@ -468,7 +469,7 @@ export default function Component() {
                         className="block cursor-pointer group"
                       >
                         <Image
-                          src="/mef-optik-magaza-dis.jpg"
+                          src="/mef-optik-magaza.jpg"
                           alt="MEF Optik Mağaza - Saathane Meydanı Şubesi"
                           width={600}
                           height={500}
