@@ -72,9 +72,20 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
+        goodly: ["var(--font-goodly)", "cursive"],
         // CSS'teki `.font-outfit` sınıfına artık gerek yok.
         // `className="font-outfit"` kullanarak bu fontu uygulayabilirsiniz.
         outfit: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+      },
+      letterSpacing: {
+        tightest: '-0.075em',
+        tighter: '-0.05em',
+        tight: '-0.025em',
+        normal: '0em',
+        wide: '0.025em',
+        wider: '0.05em',
+        widest: '0.1em',
+        goodly: '-0.01em', // 0'a çok yakın, hafif negatif
       },
       keyframes: {
         // DÜZELTME: "accordion-down" ve "accordion-up" kaldırıldı.

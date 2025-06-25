@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,6 +12,23 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const goodly = localFont({
+  src: [
+    {
+      path: "../public/fonts/goodly-regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/goodly-semibold.otf",
+      weight: "600", 
+      style: "normal",
+    },
+  ],
+  variable: "--font-goodly",
   display: "swap",
 });
 
@@ -61,7 +79,7 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${goodly.variable} antialiased`}
         suppressHydrationWarning
       >
         {children}

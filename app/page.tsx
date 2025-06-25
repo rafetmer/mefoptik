@@ -68,7 +68,7 @@ export default function Component() {
 
   // Glasses Icon Component using the new provided image
   const GlassesIcon = ({ className = "w-7 h-7" }: { className?: string }) => (
-    <Image src="/next.svg" alt="Glasses" width={28} height={28} className={className} />
+    <Image src="/round-glasses-cropped.svg" alt="Glasses" width={120} height={120} className={className} />
   )
 
   // WhatsApp phone number
@@ -153,30 +153,26 @@ export default function Component() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-lg">
-                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-inner">
-                    <GlassesIcon className="w-6 h-6 text-mef-brown" />
+              <Link href="#home" className="flex items-center space-x-3 group">
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-inner">
+                      <GlassesIcon className="w-6 h-6 text-mef-brown" />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <h1
-                  className={`text-2xl font-outfit font-medium transition-colors ${isClient && scrollY > 50 ? "text-white" : "text-mef-brown"}`}
-                >
-                  mef optik
-                </h1>
-              </div>
+                <div>
+                  <h1
+                    className={`text-2xl font-goodly font-medium tracking-goodly transition-colors ${isClient && scrollY > 50 ? "text-white" : "text-mef-brown"}`}
+                  >
+                    mef optik
+                  </h1>
+                </div>
+              </Link>
             </div>
 
             <div className="flex items-center space-x-8">
               <nav className="hidden md:flex space-x-8">
-                <Link
-                  href="#anasayfa"
-                  className={`font-medium transition-colors ${isClient && scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
-                >
-                  Ana Sayfa
-                </Link>
                 <Link
                   href="#hakkinda"
                   className={`font-medium transition-colors ${isClient && scrollY > 50 ? "text-white hover:text-mef-light" : "text-mef-brown hover:text-mef-dark"}`}
@@ -270,14 +266,14 @@ export default function Component() {
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-mef-light/30 bg-white/80 backdrop-blur-sm">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-lg">
+              <Link href="#home" onClick={() => setMobileMenuOpen(false)} className="flex items-center space-x-3 group">
+                <div className="w-10 h-10 bg-gradient-to-br from-mef-brown to-mef-light rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-inner">
                     <GlassesIcon className="w-4 h-4 text-mef-brown" />
                   </div>
                 </div>
-                <span className="font-outfit font-semibold text-mef-brown text-lg">mef optik</span>
-              </div>
+                <span className="font-goodly font-semibold text-mef-brown text-lg tracking-goodly">mef optik</span>
+              </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 text-mef-brown hover:text-mef-dark hover:bg-mef-light/20 rounded-lg transition-all duration-200"
@@ -290,7 +286,6 @@ export default function Component() {
             <nav className="p-6">
               <div className="space-y-2">
                 {[
-                  { href: "#anasayfa", label: "Ana Sayfa", icon: "🏠" },
                   { href: "#hakkinda", label: "Hakkında", icon: "ℹ️" },
                   { href: "#vizyon", label: "Vizyonumuz", icon: "🎯" },
                   { href: "#markalar", label: "Markalar", icon: "🏷️" },
@@ -340,8 +335,8 @@ export default function Component() {
       </header>
 
       <main className="flex-1 pt-20">
-        {/* Hero Section - Apple Style */}
-        <section id="anasayfa" ref={heroRef} className="relative">
+        {/* Hero Section - Ana Sayfa */}
+        <section id="home" ref={heroRef} className="relative">
           {/* Sticky Background */}
           <div className="sticky top-0 h-screen flex items-center justify-center bg-gradient-to-br from-mef-dark to-mef-black overflow-hidden">
             <div className="absolute inset-0 opacity-20">
@@ -374,7 +369,7 @@ export default function Component() {
                             </div>
                           </div>
                           <div className="text-left">
-                            <div className="text-5xl font-outfit font-medium text-white">mef optik</div>
+                            <div className="text-5xl font-goodly font-medium text-white tracking-goodly">mef optik</div>
                           </div>
                         </div>
                       </div>
@@ -1075,7 +1070,7 @@ export default function Component() {
               </div>
               <div>
                 <div className="flex items-center space-x-1">
-                  <span className="text-xl font-outfit font-medium text-white">mef optik</span>
+                  <span className="text-xl font-goodly font-medium text-white tracking-goodly">mef optik</span>
                 </div>
               </div>
             </div>

@@ -7,7 +7,27 @@
 @tailwind utilities;
 
 /* ======================================================================== */
-/* 2. TEMA VE DEĞİŞKEN TANIMLAMALARI                                       */
+/* 2. YEREL FONTLAR                                                         */
+/* ======================================================================== */
+/* Yerel font dosyalarının tanımlaması */
+@font-face {
+  font-family: 'Goodly';
+  src: url('/fonts/goodly-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Goodly';
+  src: url('/fonts/goodly-semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ======================================================================== */
+/* 3. TEMA VE DEĞİŞKEN TANIMLAMALARI                                       */
 /* ======================================================================== */
 /* Burası tema renklerinizin merkezi. tailwind.config.ts dosyası buradaki  */
 /* değişkenleri kullanarak çalışır. Bu yapı doğrudur ve kalmalıdır.        */
