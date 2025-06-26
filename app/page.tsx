@@ -102,8 +102,8 @@ export default function Component() {
   )
 
   // WhatsApp phone number
-  const whatsappNumber = "+90 (362) 433 0303"
-  const whatsappUrl = `https://wa.me/903624330303`
+  const whatsappNumber = "+90 (530) 398 99 61"
+  const whatsappUrl = `https://wa.me/905303989961`
 
   // Brand data with PNG logos
   const brands = [
@@ -463,7 +463,7 @@ export default function Component() {
                         <a href="https://instagram.com/mefoptik" target="_blank" rel="noopener noreferrer">
                           <Button
                             variant="outline"
-                            className="w-full sm:w-auto border-2 border-mef-brown text-mef-brown hover:bg-mef-brown hover:text-white px-8 py-3 text-lg transform hover:scale-105 transition-all duration-300"
+                            className="w-full sm:w-auto border-2 !border-mef-brown !bg-white !text-mef-brown hover:!bg-mef-cream hover:!text-mef-dark hover:!border-mef-dark px-8 py-3 text-lg transform hover:scale-105 transition-all duration-300 shadow-lg"
                           >
                             Ürünleri İncele
                           </Button>
@@ -482,7 +482,7 @@ export default function Component() {
                         className="block cursor-pointer group"
                       >
                         <Image
-                          src="/mef-optik-magaza.jpg"
+                          src="/dükkan_foto2.jpeg"
                           alt="MEF Optik Mağaza - Saathane Meydanı Şubesi"
                           width={600}
                           height={500}
@@ -735,7 +735,7 @@ export default function Component() {
                         className="block cursor-pointer group"
                       >
                         <Image
-                          src="/globe.svg"
+                          src="/dükkan_foto1.jpeg"
                           alt="56&apos;lar Şubesi"
                           width={600}
                           height={600}
@@ -766,14 +766,26 @@ export default function Component() {
                           : "opacity-0 translate-y-10 scale-95"
                       }`}
                     >
-                      <Image
-                        src="/file.svg"
-                        alt="Misyon görseli"
-                        width={600}
-                        height={600}
-                        className="rounded-2xl shadow-2xl"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-tr from-mef-brown/20 to-transparent rounded-2xl"></div>
+                      <a
+                        href="https://instagram.com/mefoptik"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block cursor-pointer group"
+                      >
+                        <Image
+                          src="/dükkan_foto3.jpeg"
+                          alt="Misyon görseli"
+                          width={600}
+                          height={600}
+                          className="rounded-2xl shadow-2xl group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-black/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <div className="bg-white/90 px-4 py-2 rounded-full">
+                            <p className="text-mef-dark font-medium">📸 Instagram'da Takip Edin</p>
+                          </div>
+                        </div>
+                      </a>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-mef-brown/20 to-transparent rounded-2xl pointer-events-none"></div>
                     </div>
                     <div
                       className={`space-y-8 order-1 lg:order-2 transition-all duration-1000 ease-out ${
