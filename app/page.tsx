@@ -476,7 +476,7 @@ export default function Component() {
                       }`}
                     >
                       <a
-                        href="https://maps.google.com/?q=Saathane+Meydanı+Samsun"
+                        href="https://maps.app.goo.gl/xSESsQHvmdC4zQvZ9?g_st=iw"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block cursor-pointer group"
@@ -1087,7 +1087,7 @@ export default function Component() {
                       <h3 className="text-xl font-bold mb-4 text-mef-dark">Şubelerimiz</h3>
                       <div className="space-y-2">
                         <a
-                          href="https://maps.google.com/?q=Saathane+Meydanı+Samsun"
+                          href="https://maps.app.goo.gl/xSESsQHvmdC4zQvZ9?g_st=iw"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block text-mef-brown hover:text-mef-dark transition-colors underline decoration-dotted font-medium"
