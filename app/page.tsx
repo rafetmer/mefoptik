@@ -321,12 +321,12 @@ export default function Component() {
             <nav className="p-6 bg-white" style={{ backgroundColor: '#ffffff' }}>
               <div className="space-y-2">
                 {[
-                  { href: "#home", label: "Ana Sayfa", icon: "🏠" },
-                  { href: "#hakkinda", label: "Hakkında", icon: "ℹ️" },
-                  { href: "#vizyon", label: "Vizyonumuz", icon: "🎯" },
-                  { href: "#markalar", label: "Markalar", icon: "🏷️" },
-                  { href: "#blog", label: "S&C", icon: "❓" },
-                  { href: "#iletisim", label: "İletişim", icon: "📞" },
+                  { href: "#home", label: "Ana Sayfa", icon: "•" },
+                  { href: "#hakkinda", label: "Hakkında", icon: "•" },
+                  { href: "#vizyon", label: "Vizyonumuz", icon: "•" },
+                  { href: "#markalar", label: "Markalar", icon: "•" },
+                  { href: "#blog", label: "S&C", icon: "•" },
+                  { href: "#iletisim", label: "İletişim", icon: "•" },
                 ].map((item, index) => (
                   <Link
                     key={item.href}
@@ -337,7 +337,7 @@ export default function Component() {
                     }`}
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
-                    <span className="text-xl">{item.icon}</span>
+                    <span className="text-2xl font-bold text-mef-brown" style={{ fontFamily: 'Georgia, serif' }}>{item.icon}</span>
                     <span className="text-lg">{item.label}</span>
                   </Link>
                 ))}
@@ -490,7 +490,7 @@ export default function Component() {
                         />
                         <div className="absolute inset-0 bg-black/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                           <div className="bg-white/90 px-4 py-2 rounded-full">
-                            <p className="text-mef-dark font-medium">📍 MEF Optik Mağazamız</p>
+                            <p className="text-mef-dark font-medium">📍 MEF Optik | Saathane Mağazamız</p>
                           </div>
                         </div>
                       </a>
@@ -743,7 +743,7 @@ export default function Component() {
                         />
                         <div className="absolute inset-0 bg-black/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                           <div className="bg-white/90 px-4 py-2 rounded-full">
-                            <p className="text-mef-dark font-medium">📍 56&apos;lar Şubesi</p>
+                            <p className="text-mef-dark font-medium">📍 MEF Optik | 56&apos;lar Şubesi</p>
                           </div>
                         </div>
                       </a>
@@ -1092,7 +1092,7 @@ export default function Component() {
                           rel="noopener noreferrer"
                           className="block text-mef-brown hover:text-mef-dark transition-colors underline decoration-dotted font-medium"
                         >
-                          📍 Saathane Meydanı
+                          📍 MEF Optik | Saathane Mağazamız
                         </a>
                         <a
                           href="https://maps.google.com/?q=56lar+Samsun"
@@ -1100,7 +1100,7 @@ export default function Component() {
                           rel="noopener noreferrer"
                           className="block text-mef-brown hover:text-mef-dark transition-colors underline decoration-dotted font-medium"
                         >
-                          📍 56&apos;lar
+                          📍 MEF Optik | 56&apos;lar Mağazamız
                         </a>
                       </div>
                     </div>
