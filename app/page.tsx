@@ -729,7 +729,7 @@ export default function Component() {
                       }`}
                     >
                       <a
-                        href="https://maps.google.com/?q=56lar+Samsun"
+                        href="https://maps.app.goo.gl/38X1BNTTYHmqU2HC6"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block cursor-pointer group"
@@ -1095,7 +1095,7 @@ export default function Component() {
                           📍 MEF Optik | Saathane Mağazamız
                         </a>
                         <a
-                          href="https://maps.google.com/?q=56lar+Samsun"
+                          href="https://maps.app.goo.gl/38X1BNTTYHmqU2HC6"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block text-mef-brown hover:text-mef-dark transition-colors underline decoration-dotted font-medium"
